@@ -1,0 +1,14 @@
+{
+  "extraKnownMarketplaces": {
+    "sst-ai-skills": {
+      "source": {
+        "source": "github",
+        "repo": "sst-ai-lab/sst-ai-skills"
+      },
+      "autoUpdate": true
+    }
+  },
+  "enabledPlugins": {
+    "backend@sst-ai-skills": true
+  }
+}
