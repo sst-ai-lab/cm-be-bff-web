@@ -10,5 +10,17 @@
   },
   "enabledPlugins": {
     "backend@sst-ai-skills": true
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "claude plugin marketplace update sst-ai-skills && claude plugin update backend@sst-ai-skills --scope project"
+          }
+        ]
+      }
+    ]
   }
 }
