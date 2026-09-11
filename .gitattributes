@@ -1,0 +1,3 @@
+# Claude CLI rewrites these with LF on session start (`claude plugin update --scope project`);
+# pinning LF keeps them clean on Windows with core.autocrlf=true.
+.claude/settings.json text eol=lf
