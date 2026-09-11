@@ -1,4 +1,20 @@
 {
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/sync-plugins.mjs\"",
+            "timeout": 300
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "backend@sst-ai-skills": true
+  },
   "extraKnownMarketplaces": {
     "sst-ai-skills": {
       "source": {
@@ -7,20 +23,5 @@
       },
       "autoUpdate": true
     }
-  },
-  "enabledPlugins": {
-    "backend@sst-ai-skills": true
-  },
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "claude plugin marketplace update sst-ai-skills && claude plugin update backend@sst-ai-skills --scope project"
-          }
-        ]
-      }
-    ]
   }
 }
