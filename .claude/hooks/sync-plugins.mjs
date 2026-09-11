@@ -30,18 +30,25 @@ function runClaude(args) {
   });
 }
 
-// realpath expands Windows 8.3 short names (e.g. HAIBAZ~1) so both spellings compare equal.
+// Claude Code matches a project-scope install by its exact projectPath string, so on Windows
+// `d:\repo` (VS Code) and `D:\repo` (terminal) are different projects: a plugin installed from
+// one reports "not cached" in the other. Treat spellings that differ only in case as different
+// so each launcher gets its own install record.
+// realpath still expands Windows 8.3 short names (e.g. HAIBAZ~1) so both spellings compare equal.
 function samePath(a, b) {
-  const norm = (p) => {
-    let full = resolve(p);
+  const ra = resolve(a);
+  const rb = resolve(b);
+  if (ra === rb) return true;
+  if (ra.toLowerCase() === rb.toLowerCase()) return false;
+  const canonical = (p) => {
     try {
-      full = realpathSync.native(full);
+      return realpathSync.native(p);
     } catch {
       // Path no longer exists; compare the resolved form.
+      return p;
     }
-    return process.platform === "win32" ? full.toLowerCase() : full;
   };
-  return norm(a) === norm(b);
+  return canonical(ra) === canonical(rb);
 }
 
 function lastLine(text) {
