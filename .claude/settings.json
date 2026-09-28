@@ -13,15 +13,17 @@
     ]
   },
   "enabledPlugins": {
-    "backend@sst-ai-skills": true
+    "sst-common@sst-ai-skills": true,
+    "sst-be-common@sst-ai-skills": true,
+    "cm-be-bff-common@sst-ai-skills": true
   },
   "extraKnownMarketplaces": {
     "sst-ai-skills": {
       "source": {
-        "source": "github",
-        "repo": "sst-ai-lab/sst-ai-skills"
+        "source": "git",
+        "url": "git@github.com:sst-ai-lab/sst-ai-skills.git"
       },
-      "autoUpdate": true
+      "autoUpdate": false
     }
   }
 }
